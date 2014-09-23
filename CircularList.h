@@ -155,13 +155,13 @@ void CircularList<T>::remove(int index)
           loc_pos = 1;
           loc = find(loc_pos);
           delete loc;
-          loc = NULL;
+          sze--;
           loc_pos = 0;
       }
       else
       {
           loc_pos = index;
-          loc = find(index);
+          loc = find(loc_pos);
 
           DoubleNode<T>* next = loc->getNext();
           DoubleNode<T>* prev = loc->getPrev();
