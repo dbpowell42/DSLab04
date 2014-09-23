@@ -10,6 +10,9 @@
 #include "Text.h"
 using CSC2110::String;
 
+#include <iostream>
+using namespace std;
+
 template < class T >
 class CircularList : public Drawable
 {
@@ -140,6 +143,7 @@ void CircularList<T>::animateMovement(bool clockwise, DoubleNode<T>* where)
 template < class T >
 void CircularList<T>::remove(int index)
 {
+
    //DO THIS
    //remember to move loc and loc_pos to the location of the removal
    //remember to delete the node after it has been removed from the list
@@ -151,20 +155,25 @@ void CircularList<T>::remove(int index)
           loc_pos = 1;
           loc = find(loc_pos);
           delete loc;
-          sze--;
+          loc = NULL;
+          loc_pos = 0;
       }
       else
       {
           loc_pos = index;
           loc = find(index);
-          cin.get();
-          DoubleNode<T>* next = loc->getNext();
 
+          DoubleNode<T>* next = loc->getNext();
+          DoubleNode<T>* prev = loc->getPrev();
 
           next->setPrev(prev);
           prev->setNext(next);
 
           delete loc;
+          loc = prev;
+          loc_pos = index - 1;
+          if (loc_pos == 0)
+		loc_pos = sze - 1;
      }
      sze--;
    }
