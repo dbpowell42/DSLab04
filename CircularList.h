@@ -151,15 +151,15 @@ void CircularList<T>::remove(int index)
           loc_pos = 1;
           loc = find(loc_pos);
           delete loc;
-          sze--;
+
       }
       else
       {
           loc_pos = index;
-          loc = find(index);
-          cin.get();
-          DoubleNode<T>* next = loc->getNext();
+          loc = find(loc_pos);
 
+          DoubleNode<T>* next = loc->getNext();
+          DoubleNode<T>* prev = loc->getPrev();
 
           next->setPrev(prev);
           prev->setNext(next);
